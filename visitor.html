@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Darbic Visitor Dashboard</title>
+    <link rel="stylesheet" href="visitor.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+ <!-- Header: Logo + Site Name + Sign Out -->
+  <header class="main-header">
+    <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
+    <h1 class="Darbic-name">DARBIC</h1>
+    <button class="signout-btn" type="button">Sign Out</button>
+  </header>
+
+
+
+<body>
+
+<header class="header">
+    <h2>Darbic Visitor</h2>
+</header>
+
+
+<div class="container">
+
+<aside class="sidebar">
+<a onclick="showSection('ticket')">Enter Ticket</a>
+<a onclick="showSection('assignment')">Assignment</a>
+<a onclick="showSection('profile')">Profile</a>
+<a onclick="showSection('notifications')">Notifications</a>
+<a onclick="showSection('history')">Event History</a>
+</aside>
+
+<main class="content">
+
+<!-- ==================================== TICKET SECTION ==================================-->
+
+<div id="ticket" class="section active">
+    <div class="ticket-wrapper">
+
+<div class="card">
+<h3>Enter Ticket Number</h3>
+
+<div class="ticket-row">
+<input id="ticketInput" placeholder="Enter Ticket ID">
+<button class="btn-darbic" onclick="submitTicket(this)">🚀 Submit Ticket</button>
+</div>
+
+</div>
+</div>
+
+
+<!--====================================== STATS================================ -->
+<!-- KPI CARDS -->
+<div class="stats">
+
+<div class="stat-card">
+<div class="icon">👥</div>
+<div>
+<div class="stat-number" id="visitors">0</div>
+<div class="stat-label">Visitors Guided</div>
+</div>
+</div>
+
+<div class="stat-card">
+<div class="icon">🚪</div>
+<div>
+<div class="stat-number" id="gates">0</div>
+<div class="stat-label">Active Gates</div>
+</div>
+</div>
+
+<div class="stat-card">
+<div class="icon">⚡</div>
+<div>
+<div class="stat-number" id="flow">0%</div>
+<div class="stat-label">Flow Efficiency</div>
+</div>
+</div>
+
+<div class="stat-card">
+<div class="icon">⏱</div>
+<div>
+<div class="stat-number" id="time">0m</div>
+<div class="stat-label">Time Saved</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="chart-box">
+<h3 style="margin-bottom:15px;">Zone Flow</h3>
+<canvas id="zoneChart"></canvas>
+</div>
+</div>
+
+
+
+
+
+
+<!--================================== ASSIGNMENT SECTION ==========================================-->
+
+<div id="assignment" class="section">
+
+    <div id="emptyState" class="empty-state">
+    <div class="empty-icon">🎫</div>
+    <h3>No Ticket Yet</h3>
+    <p>Enter your ticket number to view assignment details</p>
+    </div>
+
+    <div id="assignmentContent" style="display:none;">
+
+<div class="card-grid">
+
+<div class="card small">
+<h4>Assigned Gate</h4>
+<p id="gate">-</p>
+</div>
+
+<div class="card small">
+<h4>Arrival Time</h4>
+<p id="time">-</p>
+</div>
+
+<div class="card small">
+<h4>Pickup Point</h4>
+<p id="pickup">-</p>
+</div>
+
+<div class="card small">
+<h4>Time Saved</h4>
+<p id="saved">-</p>
+</div>
+
+
+<!-- ⭐ Assistance card -->
+
+<div class="card small assist-card">
+
+<h4>Assistance</h4>
+
+<div class="assist-row">
+
+<div id="assistText" class="assist-text">
+Request Golf Cart Assistance
+<span id="tick" class="tick">✔</span>
+</div>
+
+<label class="switch">
+<input type="checkbox" id="assistCheck">
+<span class="slider"></span>
+</label>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="card">
+<h3>Gate Location</h3>
+
+<iframe
+width="100%"
+height="400"
+style="border-radius:12px;border:none"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=24.7708,46.6035&z=16&output=embed">
+</iframe>
+
+</div>
+
+</div>
+</div>
+
+
+<!--========================= PROFILE ================================ -->
+
+<div id="profile" class="section">
+<div class="card"><h3>Profile Section</h3></div>
+</div>
+
+<div id="notifications" class="section">
+<div class="card"><h3>No Notifications</h3></div>
+</div>
+
+<div id="history" class="section">
+<div class="card"><h3>Event History Chart Coming</h3></div>
+</div>
+
+</main>
+
+</div>
+
+
+
+  <!-- Footer: Logo + Contact Info + Copyright -->
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="footer-logo">
+
+      <div class="contact-info">
+        <p>Email: info@Darbic.com</p>
+        <p>Phone: +966 50 000 0000</p>
+        <p>Riyadh, Saudi Arabia</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Darbic. All rights reserved.
+    </div>
+  </footer>
+
+
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll(".section").forEach(sec=>{
+sec.classList.remove("active")
+})
+
+document.getElementById(id).classList.add("active")
+
+}
+
+function submitTicket(btn){
+
+let ticket = document.getElementById("ticketInput").value.trim()
+
+/* ⭐ Validation */
+
+if(ticket === ""){
+alert("Please enter ticket number")
+return
+}
+
+/* ⭐ Loading */
+
+btn.classList.add("loading")
+btn.innerHTML = `<div class="spinner"></div> Processing...`
+
+setTimeout(()=>{
+
+/* ⭐ Smart Gate Logic */
+
+if(ticket.startsWith("VIP")){
+document.getElementById("gate").innerText="VIP Gate"
+document.getElementById("time").innerText="5:30 PM"
+document.getElementById("pickup").innerText="VIP Lounge"
+document.getElementById("saved").innerText="40 mins"
+}
+else if(ticket.startsWith("B")){
+document.getElementById("gate").innerText="B1"
+document.getElementById("time").innerText="6:45 PM"
+document.getElementById("pickup").innerText="South Zone"
+document.getElementById("saved").innerText="20 mins"
+}
+else{
+document.getElementById("gate").innerText="A3"
+document.getElementById("time").innerText="6:30 PM"
+document.getElementById("pickup").innerText="North Zone"
+document.getElementById("saved").innerText="25 mins"
+}
+
+
+/* ⭐ Go to Assignment */
+
+showSection("assignment")
+
+btn.classList.remove("loading")
+btn.innerHTML="🚀 Submit Ticket"
+
+/* ⭐ Card Animation */
+
+document.querySelectorAll(".card.small").forEach((c,i)=>{
+c.style.animation = "cardAppear .5s forwards"
+c.style.animationDelay = (i * 0.1) + "s"
+})
+
+document.getElementById("emptyState").style.display = "none"
+document.getElementById("assignmentContent").style.display="block"
+
+},1500)
+
+}
+
+/* ⭐ Special Assistance */
+
+
+let check = document.getElementById("assistCheck")
+let text = document.getElementById("assistText")
+let tick = document.getElementById("tick")
+
+check.addEventListener("change", function(){
+
+if(check.checked){
+
+text.innerHTML = 'Requested <span  class="tick show">✔</span>'
+text.classList.add("active")
+text.classList.add("vibrate")
+
+setTimeout(()=>{
+text.classList.remove("vibrate")
+},200)
+
+}else{
+
+text.innerHTML = 'Request Golf Cart Assistance <span id="tick" class="tick">✔</span>'
+text.classList.remove("active")
+
+}
+
+})
+
+
+
+
+/* ⭐ LIVE COUNTERS */
+
+function animateValue(id,start,end,duration,suffix=""){
+let range=end-start
+let stepTime=Math.abs(Math.floor(duration/range))
+let obj=document.getElementById(id)
+let current=start
+let timer=setInterval(()=>{
+current++
+obj.innerHTML=current+suffix
+if(current==end){clearInterval(timer)}
+},stepTime)
+}
+
+animateValue("visitors",0,1240,1500)
+animateValue("gates",0,18,1000)
+animateValue("flow",0,72,1500,"%")
+animateValue("time",0,32,1500,"m")
+
+
+/* ⭐ Chart */
+
+let chart = new Chart(document.getElementById("zoneChart"),{
+type:"bar",
+
+data:{
+labels:["North Zone","South Zone","VIP"],
+datasets:[{
+data:[70,50,30],
+backgroundColor:[
+"#7A1023",
+"#c4455d",
+"#e6a9b6"
+],
+borderRadius:8
+}]
+},
+
+options:{
+indexAxis:"y",
+responsive:true,
+maintainAspectRatio:false,
+plugins:{legend:{display:false}},
+scales:{
+x:{
+beginAtZero:true,
+max:100,
+grid:{display:false}
+},
+y:{grid:{display:false}}
+},
+animation:{
+duration:1000,
+easing:"easeOutQuart"
+}
+}
+
+})
+
+/* ⭐ LIVE UPDATE */
+
+function updateChart(){
+
+chart.data.datasets[0].data = [
+Math.floor(Math.random()*100),
+Math.floor(Math.random()*100),
+Math.floor(Math.random()*100)
+]
+
+chart.update()
+
+}
+
+/* Every five seconds*/
+
+setInterval(updateChart,5000)
+
+</script>
+
+
+</body>
+</html>
