@@ -1,0 +1,592 @@
+body{
+    margin:0;
+    font-family:Segoe UI;
+    background:#fef2f6;
+}
+
+/*======Additions========*/
+
+html, body{
+height:100%;
+}
+
+
+
+/* ===========HEADER============ */
+
+.header{
+    background:#6b0f1a; /* burgundy */
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 70px;
+  background:#fef2f6;
+}
+
+.logo {
+  height: 150px;
+}
+
+.Darbic-name {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  letter-spacing: 4px;
+  color: #8f0f1f;
+}
+
+/* ===== Sign Out Button ===== */
+.signout-btn {
+  background-color:  #8f0f1f;
+  color: #ffffff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size:20px
+}
+
+.signout-btn:hover {
+  background-color: #8f0f1f;
+}
+
+
+/* ===========End of HEADER============ */
+
+
+
+
+/*============= LAYOUT ================ */
+
+.container{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+width:240px;
+background:white;
+height:calc(100vh - 120px);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+border-top-right-radius:20px;
+border-bottom-right-radius:20px;
+padding-top:20px;
+}
+
+.sidebar a{
+display:block;
+padding:16px 22px;
+cursor:pointer;
+font-weight:500;
+color:#444;
+transition:.25s;
+border-left:4px solid transparent;
+}
+
+.sidebar a:hover{
+background:#f9e7ed;
+color:#7A1023;
+border-left:4px solid #7A1023;
+}
+
+.content{
+flex:1;
+padding:35px;
+
+display:flex;       
+flex-direction:column; 
+
+
+
+}
+
+/*============= End of LAYOUT ================ */
+
+
+
+
+/* SECTIONS */
+
+.section{
+display:none;
+animation:fade .4s;
+flex:1;
+
+}
+
+.section.active{
+display:block;
+flex-direction:column;
+
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* CARD */
+
+.card{
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+margin-bottom:20px;
+}
+
+.ticket-row{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.ticket-row input{
+flex:1;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+/*
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.small{
+    text-align:center;
+}
+*/
+
+
+
+/* GRID */
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-top:25px;
+}
+
+
+
+/*==============!!!!!!!!==============additional=========!!!!!!!!!==============*/
+.card.small{
+text-align:center;
+transition:.25s;
+
+opacity:0;
+transform:translateY(20px);
+}
+
+@keyframes cardAppear{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/*============================End of additional=======================*/
+
+
+
+
+
+.card.small:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+
+
+
+/**================================SUBMIT BTN=========================================**/
+
+
+.btn-darbic{
+background:linear-gradient(135deg,#7A1023,#9B1C31);
+color:white;
+padding:14px 26px;
+border-radius:12px;
+border:none;
+cursor:pointer;
+font-size:16px;
+font-weight:600;
+display:flex;
+align-items:center;
+gap:10px;
+
+box-shadow:0 8px 18px rgba(122,16,35,0.35);
+
+transition:all .25s ease;
+}
+
+/* Hover */
+
+.btn-darbic:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 24px rgba(122,16,35,0.45);
+}
+
+/* Click */
+
+.btn-darbic:active{
+transform:scale(.96);
+}
+
+/* Loading */
+
+.btn-darbic.loading{
+pointer-events:none;
+opacity:.8;
+}
+
+.spinner{
+width:18px;
+height:18px;
+border:3px solid white;
+border-top:3px solid transparent;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+
+/**================================SUBMIT BTN=========================================**/
+
+
+
+
+/* ===== Footer ===== */
+.main-footer {
+  background-color: #6b0f1a;
+  color: #f5f5f5;
+  padding: 45px 70px 20px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer-logo {
+  height: 130px;
+}
+
+.contact-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  text-align: center;
+  font-size: 13px;
+}
+
+/*=============================================================================*/
+
+.ticket-visual{
+margin-top:20px;
+background:#fff;
+padding:18px;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+
+/*===============================================*/
+
+.ticket-wrapper{
+max-width:700px;
+margin:auto;
+}
+
+
+
+
+/* STATS */
+
+
+.stat-card{
+background:white;
+padding:18px;
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.stat-number{
+font-size:26px;
+font-weight:700;
+color:#8f0f1f;
+}
+
+
+
+
+
+/* VISUAL */
+
+.visual-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.visual-card{
+background:white;
+padding:18px;
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.bar{
+height:8px;
+background:#8f0f1f;
+border-radius:20px;
+margin-top:12px;
+transition:.5s;
+}
+
+
+
+
+/*=================================================
+
+/*Split the page*/
+
+.bottom-section{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:25px;
+}
+
+
+
+
+.chart-box{
+flex:1;
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+height: 500px;
+overflow: visible;
+padding-bottom: 80px;
+}
+
+
+
+
+
+/* KPI CARDS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:25px;
+}
+
+.stat-card{
+display:flex;
+align-items:center;
+gap:15px;
+
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+transition:.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-5px);
+}
+
+.icon{
+font-size:28px;
+background:#f3d6dc;
+padding:10px;
+border-radius:12px;
+}
+
+.stat-number{
+font-size:22px;
+font-weight:700;
+color:#8f0f1f;
+}
+
+.stat-label{
+font-size:13px;
+color:#666;
+}
+
+
+/* Empty Card State */
+
+
+.empty-state{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+height:60vh; 
+text-align:center;
+}
+
+.empty-icon{
+font-size:100px; 
+margin-bottom:15px;
+animation:float 2s ease-in-out infinite;
+}
+
+.empty-state h3{
+font-size:30px; 
+margin:10px 0;
+color:#7A1023;
+}
+
+.empty-state p{
+font-size:20px;
+color:#777;
+max-width:320px;
+line-height:1.6;
+}
+
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
+}
+
+
+
+
+
+
+
+/* Golf request */
+
+
+.assist-card{
+grid-column: 1 / -1;
+padding:20px;
+margin-bottom:25px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+}
+
+.assist-row{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+margin-top:10px;
+}
+
+.assist-text{
+font-size:15px;
+color:#333;
+transition:.3s;
+}
+
+.assist-text.active{
+color:#7A1023;
+font-weight:600;
+}
+
+.switch{
+position:relative;
+width:50px;
+height:26px;
+}
+
+.switch input{
+opacity:0;
+width:0;
+height:0;
+}
+
+.slider{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:#ccc;
+border-radius:20px;
+transition:.3s;
+}
+
+.slider:before{
+content:"";
+position:absolute;
+height:20px;
+width:20px;
+left:3px;
+bottom:3px;
+background:white;
+border-radius:50%;
+transition:.3s;
+}
+
+input:checked + .slider{
+background:#7A1023;
+box-shadow:0 0 10px rgba(122,16,35,.6);
+}
+
+input:checked + .slider:before{
+transform:translateX(24px);
+}
+
+/* ✔ */
+.tick{
+font-size:14px;
+margin-left:8px;
+opacity:0;
+transform:scale(0);
+transition:.3s;
+}
+
+.tick.show{
+opacity:1;
+transform:scale(1.2);
+color:#1e7e34;
+}
+
+/* vibration */
+@keyframes vibrate{
+0%{transform:translateX(0)}
+25%{transform:translateX(-2px)}
+50%{transform:translateX(2px)}
+75%{transform:translateX(-2px)}
+100%{transform:translateX(0)}
+}
+
+.vibrate{
+animation:vibrate .2s;
+}
