@@ -272,6 +272,7 @@
       <a onclick="showSection('update', this)">Update Assignment</a>
       <a onclick="showSection('notifications', this)"> Send Notifications</a>
       <a onclick="showSection('records', this)">Visitor Records</a>
+      <a onclick="showSection('createEvent', this)">Create Event</a>
     </aside>
 
     <main class="content">
@@ -472,6 +473,63 @@
           </table>
         </div>
       </section>
+
+      <section id="createEvent" class="section">
+  <h3 class="section-heading">Create Event</h3>
+  <p class="section-sub">Admins can create and manage new events.</p>
+
+  <div class="card">
+    <div class="form-grid">
+
+      <div>
+        <label>Event Name</label>
+        <input type="text" id="eventName" placeholder="Enter event name">
+      </div>
+
+      <div>
+        <label>Location</label>
+        <input type="text" id="eventLocation" placeholder="Enter location">
+      </div>
+
+      <div>
+        <label>Date</label>
+        <input type="date" id="eventDate">
+      </div>
+
+      <div>
+        <label>Start Time</label>
+        <input type="time" id="startTime">
+      </div>
+
+      <div>
+        <label>End Time</label>
+        <input type="time" id="endTime">
+      </div>
+
+      <div>
+        <label>Capacity</label>
+        <input type="number" id="capacity" placeholder="Number of visitors">
+      </div>
+
+    </div>
+
+    <div style="margin-top:16px">
+      <label>Description</label>
+      <textarea id="eventDesc" placeholder="Enter event details..."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" onclick="createEvent()">Create Event</button>
+      <button class="btn btn-secondary" onclick="clearEvent()">Clear</button>
+    </div>
+
+    <div id="eventResult" class="result-box">
+      <strong style="color:#7A1023">Event created successfully ✅</strong>
+      <p id="eventSummary"></p>
+    </div>
+
+  </div>
+</section>
     </main>
   </div>
 
@@ -556,6 +614,29 @@
         }
       }
     });
+    
+    function createEvent(){
+  const name = document.getElementById("eventName").value;
+  const location = document.getElementById("eventLocation").value;
+  const date = document.getElementById("eventDate").value;
+
+  if(!name || !location || !date){
+    alert("Please fill all required fields");
+    return;
+  }
+
+  document.getElementById("eventResult").classList.add("show");
+
+  document.getElementById("eventSummary").textContent =
+    `Event "${name}" at ${location} on ${date} created successfully.`;
+}
+
+function clearEvent(){
+  document.querySelectorAll('#createEvent input, #createEvent textarea')
+    .forEach(el => el.value = "");
+
+  document.getElementById("eventResult").classList.remove("show");
+}
   </script>
 </body>
 </html>
