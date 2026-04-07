@@ -1,0 +1,92 @@
+#Darbic - Smart crowd assitance
+
+Project Team:
+
+#Reema Alsaud - 445201238
+Role: Admin Dashboard Development (Monitoring & Operations)
+
+ — Arrival Schedule
+•⁠  ⁠Time Slot UI
+•⁠  ⁠Timeline layout
+
+ — Crowd Distribution
+•⁠  ⁠Chart
+•⁠  ⁠Table
+
+— Update Visitor Assignment
+•⁠  ⁠Ticket search
+•⁠  ⁠Change gate/time
+
+ — Send Notifications
+•⁠  ⁠Message form
+
+— Visitor Records
+•⁠  ⁠Table
+
+
+#Norah almobaraz - 445201358
+Role: Visitor Dashboard 
+
+(Core Interaction)
+ — Ticket Entry Area
+•⁠  ⁠Input Ticket Number
+•⁠  ⁠Submit Button
+•⁠  ⁠Validation JS
+•⁠  ⁠Result Display Container
+
+ — Assignment Details Display
+•⁠  ⁠Gate Card
+•⁠  ⁠Pickup Point
+•⁠  ⁠Arrival Time
+•⁠  ⁠Zone
+•⁠  ⁠Guidance Instructions UI
+
+ — Special Assistance Request
+•⁠  ⁠Checkbox / Toggle
+•⁠  ⁠Confirmation message
+
+
+#Fatmah almohsen - 443200782
+Role: Visitor Dashboard (User Info & History)
+
+Section 4 — Registrations
+•⁠  ⁠User sign up
+•⁠  ⁠User login
+•⁠  ⁠Admin login
+
+
+Section 5 — Profile Panel
+•⁠  ⁠View personal info
+•⁠  ⁠Edit profile form
+
+ Section 6 — Notifications Panel
+•⁠  ⁠List design
+•⁠  ⁠unread highlight
+
+ Section 7— Event History Panel
+•⁠  ⁠Table
+•⁠  ⁠Time Saved Statistics cards
+
+
+#Dhay alanazi - 443200619
+Role: Admin Dashboard (Event Control)
+
+ — Create Event
+•⁠  ⁠Form
+•⁠  ⁠Layout
+•⁠  ⁠Event cards
+
+ — Define Zones
+•⁠  ⁠Add zone form
+•⁠  ⁠Zone table
+
+ — Set Gate Capacity
+•⁠  ⁠Gate list
+•⁠  ⁠Capacity input
+
+ — 
+•⁠  ⁠Home Page
+
+-Event Configuration Module
+
+
