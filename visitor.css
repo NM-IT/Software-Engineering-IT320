@@ -774,6 +774,11 @@ animation:vibrate .2s;
   }
 }
 
+
+.card {
+  position: relative;
+}
+
 .delete-btn {
   position: absolute;
   top: 30px;
