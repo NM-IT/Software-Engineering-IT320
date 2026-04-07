@@ -773,3 +773,26 @@ animation:vibrate .2s;
     flex-direction:column;
   }
 }
+
+.delete-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  background: #fff;
+  color: #b00020;
+
+  border: 1px solid #b00020;
+  padding: 10px 18px;
+
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+.delete-btn:hover {
+  background: #b00020;
+  color: white;
+  box-shadow: 0 0 10px rgba(176,0,32,0.4);
+}
