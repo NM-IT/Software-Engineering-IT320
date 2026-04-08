@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darbic Home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, Tahoma, sans-serif;
+    }
+
+    body {
+      background: #fef2f6;
+      color: #2f2f2f;
+      min-height: 100vh;
+    }
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 70px;
+      background: #fef2f6;
+    }
+
+    .logo {
+      height: 110px;
+    }
+
+    .Darbic-name {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      letter-spacing: 4px;
+      color: #8f0f1f;
+    }
+
+    .login-btn {
+      background-color: #8f0f1f;
+      color: #ffffff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.25s;
+    }
+
+    .login-btn:hover {
+      background-color: #7a1023;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 70px;
+      background: linear-gradient(to bottom, #fef2f6, #f9e7ed);
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      color: #7A1023;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #5a4b50;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #8f0f1f;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #7a1023;
+    }
+
+    .btn-secondary {
+      background: #f3d6dc;
+      color: #7A1023;
+    }
+
+    .btn-secondary:hover {
+      background: #eac3cc;
+    }
+
+    .about {
+      padding: 60px 70px;
+    }
+
+    .about h2 {
+      text-align: center;
+      color: #7A1023;
+      font-size: 34px;
+      margin-bottom: 35px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .about-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    }
+
+    .about-card h3 {
+      color: #7A1023;
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .about-card p {
+      line-height: 1.8;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .features {
+      padding: 30px 70px 70px;
+    }
+
+    .features h2 {
+      text-align: center;
+      color: #7A1023;
+      font-size: 34px;
+      margin-bottom: 35px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: #fff;
+      padding: 28px 20px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+      transition: 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      color: #7A1023;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .main-footer {
+      background: #6b0f1a;
+      color: #f5f5f5;
+      padding: 45px 70px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      height: 100px;
+      border-radius: 16px;
+    }
+
+    .contact-info p {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.35);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .about-grid,
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-header,
+      .about,
+      .features,
+      .main-footer {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .about-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-header {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .Darbic-name {
+        font-size: 32px;
+      }
+
+      .logo {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
+    <h1 class="Darbic-name">DARBIC</h1>
+<a href="login-selection.html" class="login-btn">Log In</a>
+  </header>
+
+  <section class="hero">
+    <h1>Smart Crowd Guidance for Large-Scale Events</h1>
+    <p>
+      Darbic is a web-based platform that helps event visitors find the right gate,
+      pickup point, and arrival time to reduce congestion, improve movement efficiency,
+      and enhance safety during large events.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="login.html" class="btn-primary">Get Started</a>
+      <a href="#about" class="btn-secondary">Learn More</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Darbic</h2>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>The Problem</h3>
+        <p>
+          Large-scale events often suffer from crowd congestion, confusion at entry gates,
+          long waiting times, and difficulty reaching the correct pickup or drop-off points.
+          These issues can affect both visitor safety and the overall event experience.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>The Solution</h3>
+        <p>
+          Darbic provides structured visitor guidance based on ticket information.
+          It helps users view their assigned gate, recommended arrival time, and
+          pickup point, while also supporting accessibility and smoother crowd movement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Our Features</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚪</div>
+        <h3>Gate Assignment</h3>
+        <p>Get the correct entry gate based on your ticket details.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🕒</div>
+        <h3>Arrival Time</h3>
+        <p>Receive a recommended arrival time to avoid peak congestion.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Pickup Point</h3>
+        <p>Find the most suitable pickup and drop-off point quickly and clearly.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">♿</div>
+        <h3>Special Assistance</h3>
+        <p>Support mobility assistance requests for a smoother visitor experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="footer-logo">
+      <div class="contact-info">
+        <p>Email: info@Darbic.com</p>
+        <p>Phone: +966 50 000 0000</p>
+        <p>Riyadh, Saudi Arabia</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Darbic. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
