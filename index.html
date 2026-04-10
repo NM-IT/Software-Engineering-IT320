@@ -4,203 +4,390 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Darbic Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Segoe UI, Tahoma, sans-serif;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #8f0f1f;
+      --primary-dark: #74111f;
+      --soft-bg: #fef2f6;
+      --soft-section: #f9e7ed;
+      --card-bg: #ffffff;
+      --text: #2f2f2f;
+      --muted: #5f5559;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
     }
 
     body {
-      background: #fef2f6;
-      color: #2f2f2f;
+      background: var(--soft-bg);
+      color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .main-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 70px;
-      background: #fef2f6;
+      padding: 18px 70px;
+      background: rgba(254, 242, 246, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(143, 15, 31, 0.08);
     }
 
     .logo {
-      height: 110px;
+      height: 95px;
     }
 
     .Darbic-name {
       font-family: "Playfair Display", serif;
       font-size: 42px;
       letter-spacing: 4px;
-      color: #8f0f1f;
+      color: var(--primary);
     }
 
     .login-btn {
-      background-color: #8f0f1f;
-      color: #ffffff;
-      border: none;
-      padding: 10px 28px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 18px;
       text-decoration: none;
-      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 600;
       transition: 0.25s;
+      box-shadow: 0 8px 18px rgba(143, 15, 31, 0.18);
     }
 
     .login-btn:hover {
-      background-color: #7a1023;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     .hero {
-      text-align: center;
-      padding: 90px 20px 70px;
-      background: linear-gradient(to bottom, #fef2f6, #f9e7ed);
+      padding: 85px 70px 40px;
+      background:
+        radial-gradient(circle at top right, rgba(143,15,31,0.10), transparent 28%),
+        linear-gradient(to bottom, #fef2f6, #f9e7ed);
     }
 
-    .hero h1 {
-      font-size: 46px;
-      color: #7A1023;
-      margin-bottom: 20px;
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    .hero p {
-      max-width: 850px;
-      margin: 0 auto;
+    .hero-text h1 {
+      font-size: 56px;
+      line-height: 1.12;
+      color: var(--primary-dark);
+      margin-bottom: 22px;
+      max-width: 720px;
+    }
+
+    .hero-text p {
+      max-width: 720px;
       font-size: 18px;
-      line-height: 1.8;
-      color: #5a4b50;
+      line-height: 1.9;
+      color: var(--muted);
     }
 
     .hero-buttons {
       margin-top: 30px;
       display: flex;
-      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
     }
 
     .btn-primary,
     .btn-secondary {
-      border: none;
-      border-radius: 10px;
-      padding: 14px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: 600;
       text-decoration: none;
-      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
       transition: 0.25s;
+      display: inline-block;
     }
 
     .btn-primary {
-      background: #8f0f1f;
+      background: var(--primary);
       color: #fff;
+      box-shadow: 0 8px 18px rgba(143,15,31,0.20);
     }
 
     .btn-primary:hover {
-      background: #7a1023;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background: #f3d6dc;
-      color: #7A1023;
+      background: #f2d6dc;
+      color: var(--primary-dark);
     }
 
     .btn-secondary:hover {
-      background: #eac3cc;
+      background: #ebc5ce;
+      transform: translateY(-2px);
     }
 
-    .about {
-      padding: 60px 70px;
+    .hero-visual {
+      display: flex;
+      justify-content: center;
     }
 
-    .about h2 {
+    .hero-card {
+      width: 100%;
+      max-width: 470px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(143,15,31,0.08);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .hero-card-top h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+    }
+
+    .hero-badge {
+      background: #f4dbe0;
+      color: var(--primary-dark);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-item {
+      background: #fff9fb;
+      border: 1px solid #eed8de;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .mini-item strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .mini-item span {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .stats-bar {
+      margin: 20px 70px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(143,15,31,0.06);
+    }
+
+    .stat-box {
       text-align: center;
-      color: #7A1023;
-      font-size: 34px;
-      margin-bottom: 35px;
+      padding: 24px 18px;
+      border-right: 1px solid rgba(143,15,31,0.06);
+    }
+
+    .stat-box:last-child {
+      border-right: none;
+    }
+
+    .stat-box h3 {
+      color: var(--primary);
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .stat-box p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 85px 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--primary-dark);
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .about-grid,
+    .how-grid,
+    .features-grid {
+      display: grid;
+      gap: 24px;
     }
 
     .about-grid {
-      display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
     }
 
-    .about-card {
-      background: #fff;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,.06);
-    }
-
-    .about-card h3 {
-      color: #7A1023;
-      margin-bottom: 14px;
-      font-size: 24px;
-    }
-
-    .about-card p {
-      line-height: 1.8;
-      color: #555;
-      font-size: 16px;
-    }
-
-    .features {
-      padding: 30px 70px 70px;
-    }
-
-    .features h2 {
-      text-align: center;
-      color: #7A1023;
-      font-size: 34px;
-      margin-bottom: 35px;
+    .how-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .features-grid {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
     }
 
+    .about-card,
+    .step-card,
+    .feature-card,
+    .cta-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(143,15,31,0.06);
+    }
+
+    .about-card,
+    .step-card,
     .feature-card {
-      background: #fff;
-      padding: 28px 20px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,.06);
-      transition: 0.25s;
+      padding: 30px;
     }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-icon {
-      font-size: 34px;
+    .about-card h3,
+    .step-card h3,
+    .feature-card h3 {
+      color: var(--primary-dark);
+      font-size: 24px;
       margin-bottom: 14px;
     }
 
-    .feature-card h3 {
-      color: #7A1023;
-      margin-bottom: 12px;
-      font-size: 22px;
-    }
-
+    .about-card p,
+    .step-card p,
     .feature-card p {
       color: #555;
-      line-height: 1.7;
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .features {
+      background: linear-gradient(to bottom, #fef2f6, #fff8fa);
+    }
+
+    .feature-card {
+      transition: 0.25s;
+    }
+
+    .feature-card:hover,
+    .about-card:hover,
+    .step-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .feature-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #f4dbe0;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .cta {
+      padding: 0 70px 90px;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, #a21d2d, #74111f);
+      text-align: center;
+      color: #fff;
+      padding: 54px 30px;
+    }
+
+    .cta-card h2 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .cta-card p {
+      max-width: 760px;
+      margin: 0 auto 26px;
+      line-height: 1.9;
+      color: #f7dce2;
+      font-size: 17px;
+    }
+
+    .cta-card .btn-primary {
+      background: #fff;
+      color: var(--primary-dark);
+      box-shadow: none;
+    }
+
+    .cta-card .btn-primary:hover {
+      background: #f9eff2;
     }
 
     .main-footer {
       background: #6b0f1a;
       color: #f5f5f5;
       padding: 45px 70px 20px;
-      margin-top: 40px;
     }
 
     .footer-content {
@@ -228,24 +415,39 @@
       font-size: 13px;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
+      .hero-layout,
       .about-grid,
-      .features-grid {
+      .features-grid,
+      .how-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-bar {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .main-header,
-      .about,
-      .features,
+      .hero,
+      .section,
+      .cta,
       .main-footer {
         padding-left: 28px;
         padding-right: 28px;
       }
+
+      .stats-bar {
+        margin-left: 28px;
+        margin-right: 28px;
+      }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 760px) {
+      .hero-layout,
       .about-grid,
-      .features-grid {
+      .features-grid,
+      .how-grid,
+      .stats-bar {
         grid-template-columns: 1fr;
       }
 
@@ -255,8 +457,16 @@
         text-align: center;
       }
 
-      .hero h1 {
-        font-size: 34px;
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+      .section-title {
+        font-size: 30px;
       }
 
       .Darbic-name {
@@ -266,6 +476,15 @@
       .logo {
         height: 80px;
       }
+
+      .stat-box {
+        border-right: none;
+        border-bottom: 1px solid rgba(143,15,31,0.06);
+      }
+
+      .stat-box:last-child {
+        border-bottom: none;
+      }
     }
   </style>
 </head>
@@ -274,74 +493,174 @@
   <header class="main-header">
     <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
     <h1 class="Darbic-name">DARBIC</h1>
-<a href="login-selection.html" class="login-btn">Log In</a>
+    <a href="login-selection.html" class="login-btn">Log In</a>
   </header>
 
   <section class="hero">
-    <h1>Smart Crowd Guidance for Large-Scale Events</h1>
-    <p>
-      Darbic is a web-based platform that helps event visitors find the right gate,
-      pickup point, and arrival time to reduce congestion, improve movement efficiency,
-      and enhance safety during large events.
-    </p>
+    <div class="hero-layout">
+      <div class="hero-text">
+        <h1>Smart Crowd Management for Large-Scale Events</h1>
+        <p>
+          Darbic is a web-based platform designed to guide event visitors by assigning
+          the right gate, pickup point, and arrival time. It helps reduce congestion,
+          improve movement efficiency, and create a smoother and safer event experience.
+        </p>
 
-    <div class="hero-buttons">
-      <a href="login-selection.html" class="btn-primary">Get Started</a>
-      <a href="#about" class="btn-secondary">Learn More</a>
+        <div class="hero-buttons">
+          <a href="login-selection.html" class="btn-primary">Get Started</a>
+          <a href="#about" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <h3>Live Event Guidance</h3>
+            <span class="hero-badge">Darbic</span>
+          </div>
+
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Assigned Gate</strong>
+              <span>Visitors receive the correct entry gate based on ticket details and zone rules.</span>
+            </div>
+
+            <div class="mini-item">
+              <strong>Arrival Time</strong>
+              <span>The system recommends a suitable time slot to reduce congestion at peak hours.</span>
+            </div>
+
+            <div class="mini-item">
+              <strong>Special Assistance</strong>
+              <span>Additional support can be requested for easier and more accessible movement.</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="about" id="about">
-    <h2>About Darbic</h2>
+  <section class="stats-bar">
+    <div class="stat-box">
+      <h3>2</h3>
+      <p>User Roles</p>
+    </div>
+    <div class="stat-box">
+      <h3>4+</h3>
+      <p>Main Guidance Services</p>
+    </div>
+    <div class="stat-box">
+      <h3>SQL</h3>
+      <p>Structured Data Storage</p>
+    </div>
+    <div class="stat-box">
+      <h3>24/7</h3>
+      <p>Accessible Web Platform</p>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2 class="section-title">About Darbic</h2>
+    <p class="section-subtitle">
+      Darbic focuses on guiding visitors and organizing movement during large-scale events
+      by using ticket-based instructions, gate assignment, and arrival scheduling.
+    </p>
 
     <div class="about-grid">
       <div class="about-card">
         <h3>The Problem</h3>
         <p>
-          Large-scale events often suffer from crowd congestion, confusion at entry gates,
-          long waiting times, and difficulty reaching the correct pickup or drop-off points.
-          These issues can affect both visitor safety and the overall event experience.
+          Large-scale events often face crowd congestion, unclear gate directions,
+          long waiting times, and difficulty in reaching the correct pickup or drop-off point.
+          These issues can reduce safety and negatively affect the overall visitor experience.
         </p>
       </div>
 
       <div class="about-card">
         <h3>The Solution</h3>
         <p>
-          Darbic provides structured visitor guidance based on ticket information.
-          It helps users view their assigned gate, recommended arrival time, and
-          pickup point, while also supporting accessibility and smoother crowd movement.
+          Darbic provides structured event guidance based on ticket information.
+          It helps visitors view their assigned gate, recommended arrival time,
+          pickup point, and guidance details in a clear and organized way.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="features">
-    <h2>Our Features</h2>
+  <section class="section">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">
+      Darbic follows a simple and organized flow to help visitors move more smoothly inside large events.
+    </p>
+
+    <div class="how-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Enter Ticket Information</h3>
+        <p>
+          The visitor enters the ticket number through the platform to access event-related guidance details.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Get Assignment Details</h3>
+        <p>
+          The system assigns the proper gate, pickup point, and suggested arrival time based on predefined rules.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Move with Less Congestion</h3>
+        <p>
+          Visitors follow the displayed instructions, which supports smoother movement and reduces crowd pressure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features">
+    <h2 class="section-title">Our Features</h2>
+    <p class="section-subtitle">
+      The platform provides key features that support both visitors and administrators in managing event flow.
+    </p>
 
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🚪</div>
         <h3>Gate Assignment</h3>
-        <p>Get the correct entry gate based on your ticket details.</p>
+        <p>Get the correct entry gate based on ticket details and event zone rules.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🕒</div>
-        <h3>Arrival Time</h3>
-        <p>Receive a recommended arrival time to avoid peak congestion.</p>
+        <h3>Arrival Scheduling</h3>
+        <p>Receive a recommended time slot to reduce congestion during peak hours.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📍</div>
-        <h3>Pickup Point</h3>
-        <p>Find the most suitable pickup and drop-off point quickly and clearly.</p>
+        <h3>Pickup Guidance</h3>
+        <p>View the most suitable pickup or drop-off point clearly and quickly.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">♿</div>
-        <h3>Special Assistance</h3>
-        <p>Support mobility assistance requests for a smoother visitor experience.</p>
+        <h3>Accessibility Support</h3>
+        <p>Support special assistance requests for visitors who need additional mobility help.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-card">
+      <h2>Start Using Darbic Today</h2>
+      <p>
+        Access a more organized event experience through structured gate assignment,
+        time scheduling, and clear visitor guidance.
+      </p>
+      <a href="login-selection.html" class="btn-primary">Get Started</a>
     </div>
   </section>
 
