@@ -693,7 +693,7 @@
       alert('Search for a ticket before saving changes.');
       return;
     }
-
+document.getElementById('resultBox').classList.add('show');
 document.getElementById('currentGate').textContent = document.getElementById('newGate').value;
 document.getElementById('currentTime').textContent = document.getElementById('newTime').value;
 document.getElementById('currentPickup').textContent = document.getElementById('pickupPoint').value || "-";
