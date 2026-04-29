@@ -329,6 +329,40 @@
         </div>
 
         <div class="record-table-wrap" style="margin-top:20px;padding:20px">
+          <div class="card">
+  <h3 style="margin-top:0;color:#7A1023">Manage Zones</h3>
+
+  <div class="form-grid">
+    <div>
+      <label>Zone Name</label>
+      <input type="text" id="zoneName" placeholder="Enter zone name">
+    </div>
+
+    <div>
+      <label>Current Visitors</label>
+      <input type="number" id="zoneVisitors" placeholder="Current visitors">
+    </div>
+
+    <div>
+      <label>Capacity</label>
+      <input type="number" id="zoneCapacity" placeholder="Zone capacity">
+    </div>
+
+    <div>
+      <label>Status</label>
+      <select id="zoneStatus">
+        <option>Available</option>
+        <option>Stable</option>
+        <option>Busy</option>
+        <option>Controlled</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="button" onclick="addZone()">Add Zone</button>
+  </div>
+</div>
           <h3 style="margin-top:0;color:#7A1023">Zone Capacity Table</h3>
           <table>
             <thead>
@@ -337,14 +371,42 @@
                 <th>Current Visitors</th>
                 <th>Capacity</th>
                 <th>Status</th>
+                <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>North Zone</td><td>420</td><td>500</td><td>Busy</td></tr>
-              <tr><td>South Zone</td><td>310</td><td>500</td><td>Stable</td></tr>
-              <tr><td>East Zone</td><td>225</td><td>400</td><td>Available</td></tr>
-              <tr><td>VIP Zone</td><td>90</td><td>150</td><td>Controlled</td></tr>
-            </tbody>
+           <tbody id="zonesTableBody">
+  <tr>
+    <td>North Zone</td>
+    <td>420</td>
+    <td>500</td>
+    <td>Busy</td>
+    <td><button class="btn btn-secondary" type="button" onclick="deleteRow(this)">Delete</button></td>
+  </tr>
+
+  <tr>
+    <td>South Zone</td>
+    <td>310</td>
+    <td>500</td>
+    <td>Stable</td>
+    <td><button class="btn btn-secondary" type="button" onclick="deleteRow(this)">Delete</button></td>
+  </tr>
+
+  <tr>
+    <td>East Zone</td>
+    <td>225</td>
+    <td>400</td>
+    <td>Available</td>
+    <td><button class="btn btn-secondary" type="button" onclick="deleteRow(this)">Delete</button></td>
+  </tr>
+
+  <tr>
+    <td>VIP Zone</td>
+    <td>90</td>
+    <td>150</td>
+    <td>Controlled</td>
+    <td><button class="btn btn-secondary" type="button" onclick="deleteRow(this)">Delete</button></td>
+  </tr>
+</tbody>
           </table>
         </div>
       </section>
@@ -673,6 +735,40 @@ document.getElementById("eventDesc").value = "";
 
     document.getElementById("eventResult").classList.remove("show");
   }
+    function addZone(){
+  const zoneName = document.getElementById("zoneName").value.trim();
+  const zoneVisitors = document.getElementById("zoneVisitors").value;
+  const zoneCapacity = document.getElementById("zoneCapacity").value;
+  const zoneStatus = document.getElementById("zoneStatus").value;
+
+  if(!zoneName || !zoneVisitors || !zoneCapacity){
+    alert("Please fill all required zone fields.");
+    return;
+  }
+
+  const tableBody = document.getElementById("zonesTableBody");
+  const newRow = document.createElement("tr");
+
+  newRow.innerHTML = `
+    <td>${zoneName}</td>
+    <td>${zoneVisitors}</td>
+    <td>${zoneCapacity}</td>
+    <td>${zoneStatus}</td>
+    <td><button class="btn btn-secondary" type="button" onclick="deleteRow(this)">Delete</button></td>
+  `;
+
+  tableBody.appendChild(newRow);
+
+  document.getElementById("zoneName").value = "";
+  document.getElementById("zoneVisitors").value = "";
+  document.getElementById("zoneCapacity").value = "";
+  document.getElementById("zoneStatus").value = "Available";
+}
+
+function deleteRow(button){
+  const row = button.closest("tr");
+  row.remove();
+}
 
   const chartCanvas = document.getElementById('crowdChart');
 
