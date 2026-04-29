@@ -681,45 +681,7 @@ function clearEvent(){
       }
     });
     
-function createEvent(){
-  const name = document.getElementById("eventName").value.trim();
-  const location = document.getElementById("eventLocation").value.trim();
-  const date = document.getElementById("eventDate").value;
-  const start = document.getElementById("startTime").value;
-  const end = document.getElementById("endTime").value;
-  const capacity = document.getElementById("capacity").value;
-  const desc = document.getElementById("eventDesc").value.trim();
 
-  if(!name || !location || !date || !desc){
-    alert("Please fill all required event fields.");
-    return;
-  }
-
-  document.getElementById("eventResult").classList.add("show");
-
-  document.getElementById("eventSummary").textContent =
-    `Event "${name}" at ${location} on ${date} created successfully.`;
-
-  const tableBody = document.getElementById("eventsTableBody");
-  const newRow = document.createElement("tr");
-
-  newRow.innerHTML = `
-    <td>${name}</td>
-    <td>${location}</td>
-    <td>${date}</td>
-    <td>${start || "-"}</td>
-    <td>${end || "-"}</td>
-    <td>${capacity || "-"}</td>
-  `;
-
-  tableBody.appendChild(newRow);
-}
-function clearEvent(){
-  document.querySelectorAll('#createEvent input, #createEvent textarea')
-    .forEach(el => el.value = "");
-
-  document.getElementById("eventResult").classList.remove("show");
-}
   </script>
 </body>
 </html>
