@@ -514,7 +514,7 @@
     </div>
 
     <div class="form-actions">
-      <button class="btn btn-primary" type="button" onclick="createEvent()">Create Event</button>
+      <button class="btn btn-primary" type="button" onclick="createNewEvent()">Create Event</button>
       <button class="btn btn-secondary" type="button" onclick="clearEvent()">Clear</button>
     </div>
 
@@ -625,7 +625,7 @@
     document.getElementById('sendStatus').textContent = 'Notification sent to selected visitors.';
   }
 
-  function createEvent(){
+  function createNewEvent(){
     alert("Button works");
     const name = document.getElementById("eventName").value.trim();
     const location = document.getElementById("eventLocation").value.trim();
