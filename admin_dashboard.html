@@ -484,6 +484,7 @@
               <div class="mini-card"><h4>Current Gate</h4><p id="currentGate">A3</p></div>
               <div class="mini-card"><h4>Current Time</h4><p id="currentTime">5:30 PM</p></div>
               <div class="mini-card"><h4>Status</h4><p id="ticketStatus">Ready</p></div>
+              <div class="mini-card"><h4>Pickup Point</h4><p id="currentPickup">-</p></div>
             </div>
           </div>
         </div>
@@ -693,12 +694,12 @@
       return;
     }
 
-    document.getElementById('resultBox').classList.add('show');
-    document.getElementById('currentGate').textContent = document.getElementById('newGate').value;
-    document.getElementById('currentTime').textContent = document.getElementById('newTime').value;
-    document.getElementById('ticketStatus').textContent = 'Assignment Updated';
+document.getElementById('currentGate').textContent = document.getElementById('newGate').value;
+document.getElementById('currentTime').textContent = document.getElementById('newTime').value;
+document.getElementById('currentPickup').textContent = document.getElementById('pickupPoint').value || "-";
+document.getElementById('ticketStatus').textContent = 'Assignment Updated';
 
-    alert('Visitor assignment updated successfully.');
+alert('Visitor assignment updated successfully.');
   }
 
   function previewMessage(){
