@@ -568,93 +568,108 @@
   </footer>
 
   <script>
-    function showSection(id, el){
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
-      if(el){ el.classList.add('active'); }
-    }
+    <script>
+  function showSection(id, el){
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 
-    function searchTicket(){
-      const ticket = document.getElementById('ticketSearch').value.trim();
-      const result = document.getElementById('resultBox');
-      if(!ticket){
-        alert('Please enter a ticket number first.');
-        return;
-      }
-      result.classList.add('show');
-      document.getElementById('currentGate').textContent = ticket.startsWith('VIP') ? 'A3' : 'B1';
-      document.getElementById('currentTime').textContent = ticket.startsWith('VIP') ? '5:30 PM' : '6:00 PM';
-      document.getElementById('ticketStatus').textContent = 'Record Loaded';
+    document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+    if(el){
+      el.classList.add('active');
     }
-
-    function updateAssignment(){
-      const ticket = document.getElementById('ticketSearch').value.trim();
-      if(!ticket){
-        alert('Search for a ticket before saving changes.');
-        return;
-      }
-      document.getElementById('resultBox').classList.add('show');
-      document.getElementById('currentGate').textContent = document.getElementById('newGate').value;
-      document.getElementById('currentTime').textContent = document.getElementById('newTime').value;
-      document.getElementById('ticketStatus').textContent = 'Assignment Updated';
-      alert('Visitor assignment updated successfully.');
-    }
-
-    function previewMessage(){
-      const group = document.getElementById('targetGroup').value;
-      const type = document.getElementById('messageType').value;
-      const message = document.getElementById('messageText').value;
-      document.getElementById('previewTag').textContent = `${type} • ${group}`;
-      document.getElementById('previewText').textContent = message;
-      document.getElementById('sendStatus').textContent = '';
-    }
-
-    function sendNotice(){
-      previewMessage();
-      document.getElementById('sendStatus').textContent = 'Notification sent to selected visitors.';
-    }
-    function createEvent(){
-  const name = document.getElementById("eventName").value.trim();
-  const location = document.getElementById("eventLocation").value.trim();
-  const date = document.getElementById("eventDate").value;
-  const start = document.getElementById("startTime").value;
-  const end = document.getElementById("endTime").value;
-  const capacity = document.getElementById("capacity").value;
-  const desc = document.getElementById("eventDesc").value.trim();
-
-  if(!name || !location || !date || !desc){
-    alert("Please fill all required event fields.");
-    return;
   }
 
-  document.getElementById("eventResult").classList.add("show");
+  function searchTicket(){
+    const ticket = document.getElementById('ticketSearch').value.trim();
+    const result = document.getElementById('resultBox');
 
-  document.getElementById("eventSummary").textContent =
-    `Event "${name}" at ${location} on ${date} created successfully.`;
+    if(!ticket){
+      alert('Please enter a ticket number first.');
+      return;
+    }
 
-  const tableBody = document.getElementById("eventsTableBody");
-  const newRow = document.createElement("tr");
+    result.classList.add('show');
+    document.getElementById('currentGate').textContent = ticket.startsWith('VIP') ? 'A3' : 'B1';
+    document.getElementById('currentTime').textContent = ticket.startsWith('VIP') ? '5:30 PM' : '6:00 PM';
+    document.getElementById('ticketStatus').textContent = 'Record Loaded';
+  }
 
-  newRow.innerHTML = `
-    <td>${name}</td>
-    <td>${location}</td>
-    <td>${date}</td>
-    <td>${start || "-"}</td>
-    <td>${end || "-"}</td>
-    <td>${capacity || "-"}</td>
-  `;
+  function updateAssignment(){
+    const ticket = document.getElementById('ticketSearch').value.trim();
 
-  tableBody.appendChild(newRow);
-}
-function clearEvent(){
-  document.querySelectorAll('#createEvent input, #createEvent textarea')
-    .forEach(el => el.value = "");
+    if(!ticket){
+      alert('Search for a ticket before saving changes.');
+      return;
+    }
 
-  document.getElementById("eventResult").classList.remove("show");
-}
+    document.getElementById('resultBox').classList.add('show');
+    document.getElementById('currentGate').textContent = document.getElementById('newGate').value;
+    document.getElementById('currentTime').textContent = document.getElementById('newTime').value;
+    document.getElementById('ticketStatus').textContent = 'Assignment Updated';
 
-    const crowdChart = new Chart(document.getElementById('crowdChart'), {
+    alert('Visitor assignment updated successfully.');
+  }
+
+  function previewMessage(){
+    const group = document.getElementById('targetGroup').value;
+    const type = document.getElementById('messageType').value;
+    const message = document.getElementById('messageText').value;
+
+    document.getElementById('previewTag').textContent = `${type} • ${group}`;
+    document.getElementById('previewText').textContent = message;
+    document.getElementById('sendStatus').textContent = '';
+  }
+
+  function sendNotice(){
+    previewMessage();
+    document.getElementById('sendStatus').textContent = 'Notification sent to selected visitors.';
+  }
+
+  function createEvent(){
+    const name = document.getElementById("eventName").value.trim();
+    const location = document.getElementById("eventLocation").value.trim();
+    const date = document.getElementById("eventDate").value;
+    const start = document.getElementById("startTime").value;
+    const end = document.getElementById("endTime").value;
+    const capacity = document.getElementById("capacity").value;
+    const desc = document.getElementById("eventDesc").value.trim();
+
+    if(!name || !location || !date || !desc){
+      alert("Please fill all required event fields.");
+      return;
+    }
+
+    document.getElementById("eventResult").classList.add("show");
+
+    document.getElementById("eventSummary").textContent =
+      `Event "${name}" at ${location} on ${date} created successfully.`;
+
+    const tableBody = document.getElementById("eventsTableBody");
+    const newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${location}</td>
+      <td>${date}</td>
+      <td>${start || "-"}</td>
+      <td>${end || "-"}</td>
+      <td>${capacity || "-"}</td>
+    `;
+
+    tableBody.appendChild(newRow);
+  }
+
+  function clearEvent(){
+    document.querySelectorAll('#createEvent input, #createEvent textarea')
+      .forEach(el => el.value = "");
+
+    document.getElementById("eventResult").classList.remove("show");
+  }
+
+  const chartCanvas = document.getElementById('crowdChart');
+
+  if(chartCanvas && typeof Chart !== "undefined"){
+    const crowdChart = new Chart(chartCanvas, {
       type: 'bar',
       data: {
         labels: ['North Zone', 'South Zone', 'East Zone', 'VIP'],
@@ -675,8 +690,8 @@ function clearEvent(){
         }
       }
     });
-    
-
+  }
+</script>
   </script>
 </body>
 </html>
