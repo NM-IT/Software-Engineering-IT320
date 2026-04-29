@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Darbic - Choose Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, Tahoma, sans-serif;
+    }
+
+    body {
+      background: #fef2f6;
+      color: #2f2f2f;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 70px;
+      background: #fef2f6;
+    }
+
+    .logo {
+      height: 110px;
+    }
+
+  .Darbic-name {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  letter-spacing: 4px;
+  color: #8f0f1f;
+}
+
+    .home-btn {
+      background: #8f0f1f;
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 40px;
+      text-decoration: none;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .box {
+      background: #fff;
+      padding: 50px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .box h2 {
+      color: #7A1023;
+      margin-bottom: 10px;
+    }
+
+    .box p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .visitor {
+      background: #8f0f1f;
+      color: #fff;
+    }
+
+    .visitor:hover {
+      background: #7a1023;
+    }
+
+    .admin {
+      background: #f3d6dc;
+      color: #7A1023;
+    }
+
+    .admin:hover {
+      background: #eac3cc;
+    }
+
+    .main-footer {
+      background: #6b0f1a;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="main-header">
+    <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
+    <h1 class="Darbic-name">DARBIC</h1>
+    <a href="index.html" class="home-btn">Home</a>
+  </header>
+
+  <div class="container">
+    <div class="box">
+      <h2>Choose Your Access</h2>
+      <p>Select how you want to continue</p>
+
+      <div class="buttons">
+        <a href="visitor-login.php" class="btn visitor">
+          Continue as Visitor
+        </a>
+
+        <a href="admin-login.php" class="btn admin">
+          Continue as Admin
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    © 2026 Darbic. All rights reserved.
+  </footer>
+
+</body>
+</html>
