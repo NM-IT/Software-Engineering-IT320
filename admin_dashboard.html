@@ -283,6 +283,35 @@
   
 
         <div class="card">
+          <div class="card">
+  <h3 style="margin-top:0;color:#7A1023">Manage Time Slots</h3>
+
+  <div class="form-grid">
+    <div>
+      <label>Start Time</label>
+      <input type="time" id="slotStart">
+    </div>
+
+    <div>
+      <label>Gate</label>
+      <input type="text" id="slotGate" placeholder="Enter gate, e.g. Gate A1">
+    </div>
+
+    <div>
+      <label>Zone</label>
+      <input type="text" id="slotZone" placeholder="Enter zone, e.g. North Zone">
+    </div>
+
+    <div>
+      <label>Visitors</label>
+      <input type="number" id="slotVisitors" placeholder="Number of visitors">
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="button" onclick="addTimeSlot()">Add Time Slot</button>
+  </div>
+</div>
           <h3 style="margin-top:0;color:#7A1023">Time Slot UI</h3>
           <div class="time-slot-grid">
             <div class="slot"><strong>5:00 PM</strong><span>Gate A1 • North Zone</span><div class="pill">110 visitors</div></div>
@@ -770,6 +799,35 @@ function deleteRow(button){
   row.remove();
 }
 
+    function addTimeSlot(){
+  const slotStart = document.getElementById("slotStart").value;
+  const slotGate = document.getElementById("slotGate").value.trim();
+  const slotZone = document.getElementById("slotZone").value.trim();
+  const slotVisitors = document.getElementById("slotVisitors").value;
+
+  if(!slotStart || !slotGate || !slotZone || !slotVisitors){
+    alert("Please fill all required time slot fields.");
+    return;
+  }
+
+  const timeSlotGrid = document.querySelector(".time-slot-grid");
+  const newSlot = document.createElement("div");
+
+  newSlot.className = "slot";
+  newSlot.innerHTML = `
+    <strong>${slotStart}</strong>
+    <span>${slotGate} • ${slotZone}</span>
+    <div class="pill">${slotVisitors} visitors</div>
+  `;
+
+  timeSlotGrid.appendChild(newSlot);
+
+  document.getElementById("slotStart").value = "";
+  document.getElementById("slotGate").value = "";
+  document.getElementById("slotZone").value = "";
+  document.getElementById("slotVisitors").value = "";
+}
+    
   const chartCanvas = document.getElementById('crowdChart');
 
   if(chartCanvas && typeof Chart !== "undefined"){
