@@ -123,7 +123,7 @@
   <header class="main-header">
     <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
     <h1 class="Darbic-name">DARBIC</h1>
-    <a href="index.html" class="home-btn">Home</a>
+    <a href="index.php" class="home-btn">Home</a>
   </header>
 
   <div class="container">
