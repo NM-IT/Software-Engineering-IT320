@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <header class="main-header">
     <img src="images/darbic-logo.jpg" alt="Darbic Logo" class="logo">
     <h1 class="Darbic-name">DARBIC</h1>
-<button class="signout-btn" type="button" onclick="window.location.href='index.html'">Home</button>
+<button class="signout-btn" type="button" onclick="window.location.href='index.php'">Home</button>
   </header>
 
   <section class="login-wrapper">
